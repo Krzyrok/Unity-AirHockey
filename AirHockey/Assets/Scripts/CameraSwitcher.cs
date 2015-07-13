@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class CameraSwitcher : MonoBehaviour {
-
 	public Camera RearStaticCamera;
 	public Camera UpStaticCamera;
 	public Camera FirstPersonDynamicCamera;

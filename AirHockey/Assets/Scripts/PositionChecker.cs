@@ -2,28 +2,23 @@
 using System.Collections;
 
 public class PositionChecker : MonoBehaviour {
-	GameObject WestWall;
-	GameObject NorthWall;
-	GameObject EastWall;
-	GameObject SouthWall;
+	private float _wallSize = 2.0f; 
 
-	float WallSize = 2.0f; 
-
-	float westX;
-	float eastX;
-	float northZ;
-	float southZ;
+	private float _westX;
+	private float _eastX;
+	private float _northZ;
+	private float _southZ;
 	// Use this for initialization
 	void Start () {
-		WestWall = GameObject.Find ("WestWall");
-		NorthWall = GameObject.Find ("NorthWall");
-		EastWall = GameObject.Find ("EastWall");
-		SouthWall = GameObject.Find ("SouthWall");
+		var westWall = GameObject.Find ("_westWall");
+		var northWall = GameObject.Find ("_northWall");
+		var eastWall = GameObject.Find ("_eastWall");
+		var southWall = GameObject.Find ("_southWall");
 
-		westX = WestWall.transform.position.x;
-		eastX = EastWall.transform.position.x;
-		northZ = NorthWall.transform.position.z;
-		southZ = SouthWall.transform.position.z;
+		_westX = westWall.transform.position.x;
+		_eastX = eastWall.transform.position.x;
+		_northZ = northWall.transform.position.z;
+		_southZ = southWall.transform.position.z;
 	}
 	
 	// Update is called once per frame
@@ -32,22 +27,22 @@ public class PositionChecker : MonoBehaviour {
 		float currentZ = transform.position.z;
 
 		Vector3 newPosition = transform.position;
-		if (currentX <= westX)
+		if (currentX <= _westX)
 		{
-			newPosition.x = westX + WallSize;
+			newPosition.x = _westX + _wallSize;
 		}
-		else if(currentX >= eastX)
+		else if(currentX >= _eastX)
 		{
-			newPosition.x = eastX - WallSize;
+			newPosition.x = _eastX - _wallSize;
 		}
 
-		if (currentZ <= southZ)
+		if (currentZ <= _southZ)
 		{
-			newPosition.z = southZ + WallSize;
+			newPosition.z = _southZ + _wallSize;
 		}
-		else if (currentZ >= northZ)
+		else if (currentZ >= _northZ)
 		{
-			newPosition.z = northZ - WallSize;
+			newPosition.z = _northZ - _wallSize;
 		}
 
 		transform.position = newPosition;

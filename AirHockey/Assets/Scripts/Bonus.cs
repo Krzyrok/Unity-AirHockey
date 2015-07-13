@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class Bonus : MonoBehaviour {
-
 	public float BonusDurationInitialTime = 10.0f;
 	public GameObject PuckObject;
 	public float AdditionForceForPuckBonus = 10.0f;
@@ -12,23 +11,23 @@ public class Bonus : MonoBehaviour {
 	public float MaximumGateXScale = 10.0f;
 	public float MinimumGateXScale = 0.5f;
 
-	float timeToEndOfBonus;
+	private float _timeToEndOfBonus;
 
 	enum BonusType { None, DoublePack, SlowerPuck, SmallerGate, BiggerGate, FasterPuck }
-	BonusType currentBonusType;
+	BonusType _currentBonusType;
 
 	// Use this for initialization
 	void Start () {
-		timeToEndOfBonus = BonusDurationInitialTime;
+		_timeToEndOfBonus = BonusDurationInitialTime;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		timeToEndOfBonus -= Time.deltaTime;
+		_timeToEndOfBonus -= Time.deltaTime;
 
-		if(timeToEndOfBonus <= 0.0f)
+		if(_timeToEndOfBonus <= 0.0f)
 		{
-			switch (currentBonusType)
+			switch (_currentBonusType)
 			{
 			case BonusType.DoublePack:
 				StopDoublePack();
@@ -52,7 +51,7 @@ public class Bonus : MonoBehaviour {
 	public void StartDoublePack()
 	{
 		Instantiate (PuckObject);
-		currentBonusType = BonusType.DoublePack;
+		_currentBonusType = BonusType.DoublePack;
 	}
 
 	public void StartSlowerPuck()
@@ -65,7 +64,7 @@ public class Bonus : MonoBehaviour {
 		
 		PuckMovement.ForceOfCollisionWithPaddle -= AdditionForceForPuckBonus;
 
-		currentBonusType = BonusType.SlowerPuck;
+		_currentBonusType = BonusType.SlowerPuck;
 	}
 
 	public void StartSmallerGate()
@@ -81,7 +80,7 @@ public class Bonus : MonoBehaviour {
 		scale.x -= AdditionXScaleForGate;
 
 		gateObject.transform.localScale = scale;
-		currentBonusType = BonusType.SmallerGate;
+		_currentBonusType = BonusType.SmallerGate;
 	}
 
 	public void StartBiggerGate()
@@ -97,7 +96,7 @@ public class Bonus : MonoBehaviour {
 		scale.x += AdditionXScaleForGate;
 
 		gateObject.transform.localScale = scale;
-		currentBonusType = BonusType.BiggerGate;
+		_currentBonusType = BonusType.BiggerGate;
 	}
 
 	public void StartFasterPuck()
@@ -110,23 +109,23 @@ public class Bonus : MonoBehaviour {
 
 		PuckMovement.ForceOfCollisionWithPaddle += AdditionForceForPuckBonus;
 		
-		currentBonusType = BonusType.FasterPuck;
+		_currentBonusType = BonusType.FasterPuck;
 	}
 
 
 
-	void StopDoublePack()
+	private void StopDoublePack()
 	{
 		Destroy (gameObject);
 	}
 
-	void StopSlowerPuck()
+	private void StopSlowerPuck()
 	{
 		PuckMovement.ForceOfCollisionWithPaddle += AdditionForceForPuckBonus;
 		Destroy (gameObject);
 	}
 
-	void StopSmallerGate()
+	private void StopSmallerGate()
 	{
 		GameObject gateObject = GameObject.Find ("Gate");
 		Vector3 scale = gateObject.transform.localScale;	
@@ -136,7 +135,7 @@ public class Bonus : MonoBehaviour {
 		Destroy (gameObject);
 	}
 
-	void StopBiggerGate()
+	private void StopBiggerGate()
 	{
 		GameObject gateObject = GameObject.Find ("Gate");
 		Vector3 scale = gateObject.transform.localScale;	
@@ -146,7 +145,7 @@ public class Bonus : MonoBehaviour {
 		Destroy (gameObject);
 	}
 
-	void StopFasterPuck()
+	private void StopFasterPuck()
 	{
 		PuckMovement.ForceOfCollisionWithPaddle -= AdditionForceForPuckBonus;
 		Destroy (gameObject);
