@@ -49,18 +49,18 @@ public class PawnMovement : MonoBehaviour {
 	}
 
 	// for situation if pawn will stuck in corner
-	int counter = 0;
-	int maxValueOfCounter = 50;
+	int _counter = 0;
+	int _maxValueOfCounter = 50;
 	void OnCollisionStay(Collision collisionObject)
 	{
 		if (collisionObject.gameObject.name == "BoardGround")
 						return;
-		if(counter < maxValueOfCounter)
+		if(_counter < _maxValueOfCounter)
 		{
-			counter++;
+			_counter++;
 			return;
 		}
-		counter = 0;
+		_counter = 0;
 		// if happened collision with another pawn, puck or board edge
 		transform.Rotate(0, RotationAngleForStuckSituation, 0);
 	}
