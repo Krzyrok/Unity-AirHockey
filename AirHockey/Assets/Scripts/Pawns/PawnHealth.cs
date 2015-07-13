@@ -6,15 +6,15 @@ public class PawnHealth : MonoBehaviour {
 	public int MaximumHealthForPawn = 3;
 	public Bonus BonusObject;
 
-	int initialHealth;
-	int currentHealth;
+	private int _initialHealth;
+	private int _currentHealth;
 	
 	// Use this for initialization
 	void Start () {
 		MaximumHealthForPawn++; // because if we want max = 2 (one or two health points), we need set range from 1 to the 3; 
 		
-		initialHealth = Random.Range (1, MaximumHealthForPawn);
-		currentHealth = initialHealth;
+		_initialHealth = Random.Range (1, MaximumHealthForPawn);
+		_currentHealth = _initialHealth;
 	}
 	
 	// Update is called once per frame
@@ -27,11 +27,11 @@ public class PawnHealth : MonoBehaviour {
 		string collisionObjectName = collisionObject.gameObject.name;
 		if (collisionObjectName == "Puck") 
 		{
-			currentHealth--;
-			if (currentHealth <= 0)
+			_currentHealth--;
+			if (_currentHealth <= 0)
 			{
 				CreateBonus();
-				PlayerScore.AddToTheScore(initialHealth);
+				PlayerScore.AddToTheScore(_initialHealth);
 				Destroy (gameObject);
 			}
 		}

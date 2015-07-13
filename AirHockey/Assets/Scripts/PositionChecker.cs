@@ -10,10 +10,10 @@ public class PositionChecker : MonoBehaviour {
 	private float _southZ;
 	// Use this for initialization
 	void Start () {
-		var westWall = GameObject.Find ("_westWall");
-		var northWall = GameObject.Find ("_northWall");
-		var eastWall = GameObject.Find ("_eastWall");
-		var southWall = GameObject.Find ("_southWall");
+		var westWall = GameObject.Find ("WestWall");
+		var northWall = GameObject.Find ("NorthWall");
+		var eastWall = GameObject.Find ("EastWall");
+		var southWall = GameObject.Find ("SouthWall");
 
 		_westX = westWall.transform.position.x;
 		_eastX = eastWall.transform.position.x;

@@ -11,34 +11,28 @@ public class PawnGenerator : MonoBehaviour {
 	public GameObject ThourthPawnWithForces;
 	public GameObject FifthPawnWithForces;
 
-	float yPosition = 0.35f;
-
-	GameObject WestWall;
-	GameObject NorthWall;
-	GameObject EastWall;
-	GameObject SouthWall;
+	private float _yPosition = 0.35f;
+	private float _wallSize = 2.0f; 
 	
-	float WallSize = 2.0f; 
-	
-	float westX;
-	float eastX;
-	float northZ;
-	float southZ;
+	private float _westX;
+	private float _eastX;
+	private float _northZ;
+	private float _southZ;
 	
 	float timeToNextPawn;
 	// Use this for initialization
 	void Start () {
 		timeToNextPawn = Duration;
 
-		WestWall = GameObject.Find ("WestWall");
-		NorthWall = GameObject.Find ("NorthWall");
-		EastWall = GameObject.Find ("EastWall");
-		SouthWall = GameObject.Find ("SouthWall");
+		var westWall = GameObject.Find ("WestWall");
+		var northWall = GameObject.Find ("NorthWall");
+		var eastWall = GameObject.Find ("EastWall");
+		var southWall = GameObject.Find ("SouthWall");
 		
-		westX = WestWall.transform.position.x;
-		eastX = EastWall.transform.position.x;
-		northZ = NorthWall.transform.position.z;
-		southZ = (NorthWall.transform.position.z - SouthWall.transform.position.z) / 4.0f + SouthWall.transform.position.z;
+		_westX = westWall.transform.position.x;
+		_eastX = eastWall.transform.position.x;
+		_northZ = northWall.transform.position.z;
+		_southZ = (northWall.transform.position.z - southWall.transform.position.z) / 4.0f + southWall.transform.position.z;
 	}
 	
 	// Update is called once per frame
@@ -73,10 +67,10 @@ public class PawnGenerator : MonoBehaviour {
 	private Vector3 GetRandomPosition()
 	{
 		Vector3 result = new Vector3();
-		result.x = Random.Range (westX + WallSize, eastX - WallSize);
-		result.z = Random.Range (southZ + WallSize, northZ - WallSize);
+		result.x = Random.Range (_westX + _wallSize, _eastX - _wallSize);
+		result.z = Random.Range (_southZ + _wallSize, _northZ - _wallSize);
 
-		result.y = yPosition;
+		result.y = _yPosition;
 
 		return result;
 	}

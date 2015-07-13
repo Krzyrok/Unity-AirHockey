@@ -9,7 +9,7 @@ public class PuckMovement : MonoBehaviour {
 
 	public float SpeedOfPuckFalling = 0.1f; // speed of falling to the down of the board
 
-	private float velocityMultiplier = 0.1f;
+	private float _velocityMultiplier = 0.1f;
 
 	// Use this for initialization
 	void Start () {
@@ -32,7 +32,7 @@ public class PuckMovement : MonoBehaviour {
 		{
 			Vector3 tranformVector = transform.position - collisionObject.transform.position;
 			tranformVector.y = 0.0f;
-			Vector3 paddleVelocity = velocityMultiplier * collisionObject.relativeVelocity;
+			Vector3 paddleVelocity = _velocityMultiplier * collisionObject.relativeVelocity;
 			paddleVelocity.y = 0.0f;
 			GetComponent<Rigidbody>().AddForce ((tranformVector + paddleVelocity) * ForceOfCollisionWithPaddle, ForceMode.Force);
 		}

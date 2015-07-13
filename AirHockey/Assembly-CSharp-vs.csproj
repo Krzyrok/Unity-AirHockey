@@ -52,7 +52,6 @@
      <Compile Include="Assets\Scripts\Paddle\PaddleArrowsMovement.cs" />
      <Compile Include="Assets\Scripts\Paddle\PaddleMouseMovement.cs" />
      <Compile Include="Assets\Scripts\Paddle\PaddleMovement.cs" />
-     <Compile Include="Assets\Scripts\Pawns\PawnCollisionTrigger.cs" />
      <Compile Include="Assets\Scripts\Pawns\PawnGenerator.cs" />
      <Compile Include="Assets\Scripts\Pawns\PawnHealth.cs" />
      <Compile Include="Assets\Scripts\Pawns\PawnsMovements\Bonuses\CircleMovementWithJumping.cs" />
