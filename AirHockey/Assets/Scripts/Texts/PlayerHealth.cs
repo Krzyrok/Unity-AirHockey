@@ -5,12 +5,12 @@ using System.Collections;
 public class PlayerHealth : MonoBehaviour {
 	public static int InitialHealth = 3;
 
-	static int currentHealth;
-	static Text healthText;
+	private static int _currentHealth;
+	private static Text _healthText;
 	// Use this for initialization
 	void Start () {
-		currentHealth = InitialHealth;
-		healthText = GetComponent<Text>();
+		_currentHealth = InitialHealth;
+		_healthText = GetComponent<Text>();
 		UpdateHealth();
 	}
 	
@@ -21,17 +21,17 @@ public class PlayerHealth : MonoBehaviour {
 
 	public static void DecreaseHealth()
 	{
-		currentHealth--;
+		_currentHealth--;
 		UpdateHealth ();
 	}
 
 	public static void UpdateHealth()
 	{
-		healthText.text = "Your health: " + currentHealth;
+		_healthText.text = "Your health: " + _currentHealth;
 	}
 
 	public static int GetCurrentHealth()
 	{
-		return currentHealth;
+		return _currentHealth;
 	}
 }

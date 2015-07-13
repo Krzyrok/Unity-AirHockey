@@ -3,11 +3,11 @@ using System.Collections;
 
 public class PuckController : MonoBehaviour {
 
-	static int puckCounter = 0;
+	private static int _puckCounter = 0;
 
 	// Use this for initialization
 	void Start () {
-		puckCounter++;
+		_puckCounter++;
 	}
 	
 	// Update is called once per frame
@@ -17,11 +17,11 @@ public class PuckController : MonoBehaviour {
 
 	public static void DecreasePuckCounter()
 	{
-		puckCounter--;
+		_puckCounter--;
 	}
 
 	public static int GetCurrentePuckCounter()
 	{
-		return puckCounter;
+		return _puckCounter;
 	}
 }

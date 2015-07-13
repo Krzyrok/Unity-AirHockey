@@ -7,9 +7,10 @@ public class PuckMovement : MonoBehaviour {
 	public static float ForceOfCollisionWithEdge = 2.0f;
 	public static float ForceOfCollisionWithPawn = 2.0f;
 
-	public float SpeedOfPuckFalling = 0.1f; // speed of fallind to the down of the board
+	public float SpeedOfPuckFalling = 0.1f; // speed of falling to the down of the board
 
-	float velocityMultiplier = 0.1f;
+	private float velocityMultiplier = 0.1f;
+
 	// Use this for initialization
 	void Start () {
 	

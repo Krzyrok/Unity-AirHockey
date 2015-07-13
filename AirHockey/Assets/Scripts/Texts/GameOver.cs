@@ -4,20 +4,20 @@ using System.Collections;
 
 public class GameOver : MonoBehaviour {
 
-	static Text gameOverText;
-	static bool isGameOver = false;
+	private static Text _gameOverText;
+	private static bool _isGameOver = false;
 
 	// Use this for initialization
 	void Start () {
-		gameOverText = GetComponent<Text> ();
-		gameOverText.text = "";
+		_gameOverText = GetComponent<Text> ();
+		_gameOverText.text = "";
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.R) && isGameOver)
+		if (Input.GetKeyDown(KeyCode.R) && _isGameOver)
 		{
-			isGameOver = false;
+			_isGameOver = false;
 			Time.timeScale = 1.0f;
 			Application.LoadLevel(Application.loadedLevel);
 		}
@@ -25,8 +25,8 @@ public class GameOver : MonoBehaviour {
 
 	public static void EndGame()
 	{
-		gameOverText.text = "Game Over\nPress R to restart";
-		isGameOver = true;
+		_gameOverText.text = "Game Over\nPress R to restart";
+		_isGameOver = true;
 		Time.timeScale = 0.0f;
 	}
 }

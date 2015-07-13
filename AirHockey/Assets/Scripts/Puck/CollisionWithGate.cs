@@ -3,11 +3,11 @@ using System.Collections;
 
 public class CollisionWithGate : MonoBehaviour {
 
-	Vector3 initialPosition;
+	private Vector3 _initialPosition;
 
 	// Use this for initialization
 	void Start () {
-		initialPosition = transform.position;
+		_initialPosition = transform.position;
 	}
 	
 	// Update is called once per frame
@@ -27,7 +27,7 @@ public class CollisionWithGate : MonoBehaviour {
 			else
 			{
 				PlayerHealth.DecreaseHealth();
-				transform.position = initialPosition;
+				transform.position = _initialPosition;
 
 				if (PlayerHealth.GetCurrentHealth() == 0)
 				{

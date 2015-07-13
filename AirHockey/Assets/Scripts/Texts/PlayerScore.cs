@@ -4,16 +4,16 @@ using System.Collections;
 
 public class PlayerScore : MonoBehaviour {
 
-	static int score = 0;
+	private static int _score = 0;
 
-	static Text scoreText;
+	private static Text _scoreText;
 
 
 	// Use this for initialization
 	void Start () {
-		score = 0;
-		scoreText = GetComponent<Text>();
-		scoreText.text = "Your score: " + score;
+		_score = 0;
+		_scoreText = GetComponent<Text>();
+		_scoreText.text = "Your score: " + _score;
 	}
 	
 	// Update is called once per frame
@@ -22,12 +22,12 @@ public class PlayerScore : MonoBehaviour {
 
 	public static void AddToTheScore(int points)
 	{
-		score += points;
+		_score += points;
 		UpdateScoreText ();
 	}
 
 	private static void UpdateScoreText()
 	{
-		scoreText.text = "Your score: " + score;
+		_scoreText.text = "Your score: " + _score;
 	}
 }
